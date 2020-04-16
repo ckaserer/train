@@ -1,7 +1,7 @@
 
-**************
-Why Terraform
-**************
+****************
+Why Terraform?!
+****************
 
 Providing a frictionless experience for workshop participants with hands on, technical sections is key to focus on what is important - hands on learning and experimenting with new technology. 
 
@@ -132,6 +132,8 @@ For a single day workshop we would spin the VMs up the night before in order to 
 This would result in 24h of uptime per VM totaling 0.192$ * 24h = 4.608$ per participant. 
 
 Less than 5$ per participant for a frictionless workshop experience that fits our strict criteria is a bargain if you ask us. Or ask our participants, they will tell how frictionless their expierence was.
+
+.. todo: add: why us region? why not docker / kubernetes
 
 -------
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; workshop infra latest documentation</title>
+  <title>Create a new Workshop &mdash; workshop infra latest documentation</title>
   
 
   
@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Architecture" href="architecture.html" />
-    <link rel="prev" title="Welcome to our workshop infra documentation!" href="index.html" /> 
+    <link rel="prev" title="Available Workshops" href="workshop_list.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,18 +80,31 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#iam-programatic-access">IAM programatic access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#provision-workshop-infra">Provision workshop infra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#destroy-workshop-infra">Destroy workshop infra</a></li>
+              <p class="caption"><span class="caption-text">First Steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="first_steps/provision.html">Provision a Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_steps/access.html">Access a Workshop Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_steps/variables.html">All about Variables</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Available Workshops</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workshop_list.html">Available Workshops</a></li>
+</ul>
+<p class="caption"><span class="caption-text">A new Workshop</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a new Workshop</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Architecture</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="why.html">Why Terraform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Why Terraform?!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution Guideline</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute to our Docs</a></li>
 </ul>
 
             
@@ -137,13 +150,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Getting Started</li>
+      <li>Create a new Workshop</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/gettingstarted.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/workshop_create.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,45 +169,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>AWS IAM with programatic access</p></li>
-<li><p>terraform and aws cli OR docker</p></li>
-</ul>
-</div>
-<div class="section" id="iam-programatic-access">
-<h2>IAM programatic access<a class="headerlink" href="#iam-programatic-access" title="Permalink to this headline">¶</a></h2>
-<p>You need to create an AWS IAM user with programatic access and store the credentials on your workstation. For the rest of the doc we will assume that your aws credentials file exists as <code class="code docutils literal notranslate"><span class="pre">~/.aws/credentials</span></code>.</p>
-</div>
-<div class="section" id="provision-workshop-infra">
-<h2>Provision workshop infra<a class="headerlink" href="#provision-workshop-infra" title="Permalink to this headline">¶</a></h2>
-<p>No software requirements except docker</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm -it <span class="se">\</span>
-  -v <span class="k">$(</span><span class="nb">echo</span> ~<span class="k">)</span>/.aws:/root/.aws:ro <span class="se">\</span>
-  -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/workdir:/opt/train/workdir <span class="se">\</span>
-  gepardec/train apply
-</pre></div>
-</div>
-<p>Assuming you have terraform and aws cli installed on your machine you can alternative execute the entrypoint directly via</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>entrypoint.sh create
-</pre></div>
-</div>
-</div>
-<div class="section" id="destroy-workshop-infra">
-<h2>Destroy workshop infra<a class="headerlink" href="#destroy-workshop-infra" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm -it <span class="se">\</span>
-  -v <span class="k">$(</span><span class="nb">echo</span> ~<span class="k">)</span>/.aws:/root/.aws:ro <span class="se">\</span>
-  -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/workdir:/opt/train/workdir <span class="se">\</span>
-  gepardec/train destroy
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>entrypoint.sh destroy
-</pre></div>
-</div>
-</div>
+  <div class="section" id="create-a-new-workshop">
+<h1>Create a new Workshop<a class="headerlink" href="#create-a-new-workshop" title="Permalink to this headline">¶</a></h1>
+<p>You would like to know how? Me too…</p>
 </div>
 
 
@@ -208,7 +185,7 @@
         <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to our workshop infra documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="workshop_list.html" class="btn btn-neutral float-left" title="Available Workshops" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

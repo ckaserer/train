@@ -3,10 +3,10 @@
 
    <br />
 
-.. image:: https://img.shields.io/travis/com/gepardec/hogarama?style=flat-square
+.. image:: https://img.shields.io/travis/com/gepardec/train?style=flat-square
    :alt: cicd badge
    :align: left
-   :target: https://travis-ci.com/Gepardec/hogarama
+   :target: https://travis-ci.com/Gepardec/train
 
 .. image:: https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg?style=flat-square
    :alt: licence badge
@@ -23,39 +23,91 @@
 
 |br|
 
-Welcome to our workshop infra documentation!
+Welcome to our workshop infra docs!
 =======================================================
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Contents
-
-   gettingstarted
-   architecture
-   why
-   documentation
 
 Providing a frictionless experience for workshop participants with hands on, technical sections is key to focus on what is important - hands on learning and experimenting with new technology. 
 
-It should be easy to work through the hands on labs no matter the operating system or hardware specification of your system. 
+It should be easy to work through the hands on labs no matter the operating system or hardware specification of your device. 
 
 First steps
 ----------------
 
-In our :doc:`Getting Started <gettingstarted>` guide you will learn how to manage the lifecycle of a workshop environment on your own.
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: First Steps
+
+   first_steps/provision
+   first_steps/access
+   first_steps/variables
+
+
+In our :doc:`Getting Started <first_steps/provision>` guide you will learn how to manage the lifecycle of a workshop environment on your own, which workshops currently exists and what those pesky variables that you need to configure do.
+
+---------
+
+.. Available Workshops - Start
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Available Workshops
+
+   workshop_list
+
+.. Available Workshops - END
+
+A new Workshop
+-------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: A new Workshop
+
+   workshop_create
+
+You want to do a workshop but could not find a readiliy available bootstrap script that fits your need? Don't worry, :doc:`here <workshop_create>`  we cover how you can create a new bootstrap file containing all the provision steps you desire. Please consider adding it to our repo once you are happy with it so we all can benefit from your work.
+
+---------
 
 Architecture
------------------
+---------------------
 
-What resources do we provision, why do we do it the way we do it? Find out in our :doc:`Architecture <architecture>` section.
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Architecture
 
-Why
------------------
+   architecture
 
-How did we end up with terraform?! Why not packer, vagrant, or a vm image? In our :doc:`Why Terraform <why>` section you will find all the answers you are looking for.
+In :doc:`Architecture <architecture>` we cover which resource get provision in AWS and a bit more... go check it out.
 
-Documentation
------------------
+---------
 
-We need to be able to understand the technology we work with. In addition to the general awareness we want to make it simple for new colleagues to get started with the tools that we have in place. Hence documentation is key. Here is how we do :doc:`Documentation <documentation>` for our workshop infrastructure.
+Misc
+---------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Misc
+
+   misc
+
+You want to know how we ended up with terraform?! Why not packer, vagrant, or a vm image? In our :doc:`Why Terraform?! <misc>` section you will find all the answers you did not know you wanted.
+
+---------
+
+Contribution Guidelines
+------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Contribution Guideline
+
+   contribute
+
+We need to be able to understand the technology we work with. In addition to the general awareness we want to make it simple for new colleagues to get started with the tools that we have in place. Hence documentation is key. Here is how you can contribute to our repository.

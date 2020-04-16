@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; workshop infra latest documentation</title>
+  <title>Available Workshops &mdash; workshop infra latest documentation</title>
   
 
   
@@ -25,7 +25,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -35,7 +34,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Create a new Workshop" href="workshop_create.html" />
+    <link rel="prev" title="All about Variables" href="first_steps/variables.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -62,7 +63,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -86,8 +87,12 @@
 <li class="toctree-l1"><a class="reference internal" href="first_steps/variables.html">All about Variables</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Available Workshops</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="workshop_list.html">Available Workshops</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Available Workshops</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#helloworld">helloworld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#containerization-wip">containerization (WIP)</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">A new Workshop</span></p>
 <ul>
@@ -149,12 +154,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Available Workshops</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/workshop_list.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -166,24 +173,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="available-workshops">
+<h1>Available Workshops<a class="headerlink" href="#available-workshops" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>helloworld</p></li>
+<li><p>containerization (WIP)</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="helloworld">
+<h2>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h2>
+<p>The helloworld workshop is a exactly what it sounds like - a hello world showcasing how to set up a new workshop from scratch. Provisioning a workshop with <code class="code docutils literal notranslate"><span class="pre">bootstrap_file</span> <span class="pre">=</span> <span class="pre">&quot;helloworld.sh&quot;</span></code> in your <code class="code docutils literal notranslate"><span class="pre">workdir/variables.tfvars</span></code> will</p>
+<ul class="simple">
+<li><p>update the OS</p></li>
+<li><p>install httpd</p></li>
+<li><p>serve a hello world message on Port 80</p></li>
+</ul>
+<p>This is a simple and lightweight way to start experimenting with the infrastructure code in order to get familiar with terraform and how we use it in the context of workshops.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="containerization-wip">
+<h2>containerization (WIP)<a class="headerlink" href="#containerization-wip" title="Permalink to this headline">¶</a></h2>
+<p>Disclaimer: The containerization workshop is not readily available yet!
+Hence the WIP in brackets (Work in Progress)</p>
+<p>Contact: ckaserer</p>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="workshop_create.html" class="btn btn-neutral float-right" title="Create a new Workshop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="first_steps/variables.html" class="btn btn-neutral float-left" title="All about Variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -216,14 +245,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

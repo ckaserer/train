@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Why Terraform" href="why.html" />
-    <link rel="prev" title="Getting Started" href="gettingstarted.html" /> 
+    <link rel="next" title="Why Terraform?!" href="misc.html" />
+    <link rel="prev" title="Create a new Workshop" href="workshop_create.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,12 +80,31 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">First Steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="first_steps/provision.html">Provision a Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_steps/access.html">Access a Workshop Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_steps/variables.html">All about Variables</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Available Workshops</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workshop_list.html">Available Workshops</a></li>
+</ul>
+<p class="caption"><span class="caption-text">A new Workshop</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workshop_create.html">Create a new Workshop</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Architecture</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="why.html">Why Terraform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Why Terraform?!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution Guideline</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute to our Docs</a></li>
 </ul>
 
             
@@ -152,8 +171,12 @@
             
   <div class="section" id="architecture">
 <h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
-<p>We definitly need more documentation about the general architecture here.</p>
-<p>Terraform state is stored in aws s3 in us-east-1.</p>
+<p>In the architecture section we will cover which resource get provision in AWS, what those variables in <code class="code docutils literal notranslate"><span class="pre">workdir/variables.tfvars</span></code> specify in more details and you get to look at an awesome infrastructure architecture diagram.</p>
+<p>Each workshop will be provisioned in a single AWS region (e.g. us-west-1) and is encapseled in a dedicated VPC. The Internet Gateway, Security groups and Route Table in our VPC are configured to allow all ingress / egress traffic for ease of use.</p>
+<p>All resource are tagged with a <code class="code docutils literal notranslate"><span class="pre">created</span></code> tag containing the terraform creation timestamp and an <code class="code docutils literal notranslate"><span class="pre">owner</span></code> tag containing the owner specified in <code class="code docutils literal notranslate"><span class="pre">workdir/variables.tfvars</span></code>.</p>
+<p>Each instance is accessible with an unique auto generated ssh key which can be found in <code class="code docutils literal notranslate"><span class="pre">workdir/</span></code> after you have applied a terraform script.</p>
+<p>Terraform state is the only element that is fixed to an S3 bucket named <code class="code docutils literal notranslate"><span class="pre">gepardec-terraform-state</span></code> in the <code class="code docutils literal notranslate"><span class="pre">us-east-1</span></code> region.</p>
+<img alt="Architecture Diagram" src="_images/architecture.png" />
 </div>
 
 
@@ -164,10 +187,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="why.html" class="btn btn-neutral float-right" title="Why Terraform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="misc.html" class="btn btn-neutral float-right" title="Why Terraform?!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gettingstarted.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="workshop_create.html" class="btn btn-neutral float-left" title="Create a new Workshop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
