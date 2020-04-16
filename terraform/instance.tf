@@ -16,11 +16,11 @@ data "aws_ami" "centos" {
 
 resource "aws_instance" "main" {
   ami             = data.aws_ami.centos.id
-  count           = var.num_participants
+  count           = var.instance_replica
   instance_type   = var.instance_type
   key_name        = "${var.resource_prefix}_${count.index}"
   subnet_id       = aws_subnet.main.id
-  user_data       = file("terraform/files/bootstrap/${var.bootstrap_file}")
+  user_data       = file("files/bootstrap/${var.bootstrap_file}")
   vpc_security_group_ids = ["${aws_security_group.main.id}"]
   
   root_block_device {
@@ -32,8 +32,4 @@ resource "aws_instance" "main" {
     created = timestamp()
     owner = var.owner
   }
-}
-
-output "instance_ips" {
-  value = ["${aws_instance.main.*.public_ip}"]
 }

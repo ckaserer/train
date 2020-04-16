@@ -55,22 +55,39 @@ function main {
      echo "owner and resource_prefix in workdir/variables.tfvars can't be empty"
      exit 1
   fi
+ 
+  # switch to terraform directory -> current limitation of terraform output command
+  cd terraform
 
   # initialize terraform
-  execute "terraform init -backend-config='key=${backend_config_key}' terraform"
+  execute "terraform init -backend-config='key=${backend_config_key}'"
 
   # create ssh keys
-  num_participants=$((num_participants - 1))
+  instance_replica=$((instance_replica - 1))
+  local counter=${instance_replica}
   if [[ "${1}" == "apply" ]]; then 
-    while [[ ${num_participants} -ge 0 ]]; do
-      execute "mkdir -p workdir/${resource_prefix}/${num_participants}"
-      execute "ssh-keygen -t rsa -b 4096 -f workdir/${resource_prefix}/${num_participants}/access -q -N ''"
-      num_participants=$((num_participants - 1))
+    while [[ ${counter} -ge 0 ]]; do
+      execute "mkdir -p ../workdir/${resource_prefix}/${instance_replica}"
+      execute "ssh-keygen -t rsa -b 4096 -f ../workdir/${resource_prefix}/${instance_replica}/access -q -N ''"
+      counter=$((counter - 1))
     done
   fi  
 
   # execute terraform
-  execute "terraform $@ -var-file='workdir/variables.tfvars' -auto-approve terraform"
+  execute "terraform $@ -var-file='../workdir/variables.tfvars' -auto-approve"
+
+  if [[ "${1}" == "apply" ]]; then 
+    counter=${instance_replica}
+    while [[ ${counter} -ge 0 ]]; do
+      echo """IP: "$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')
+DNS: "$(terraform output -json instance_public_dns | jq ".[${counter}][0]" | tr -d '"')
+
+SSH access via
+ssh centos@IP -I access
+""" > ../workdir/${resource_prefix}/${instance_replica}/readme.txt
+      counter=$((counter - 1))
+    done
+  fi  
 }
 
 main $@
