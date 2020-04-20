@@ -32,6 +32,14 @@ function usage {
   echo "Available commands: valid terraform commands such as apply or destroy"
 }
 
+function create_readme {
+  local counter=${1}
+  local targetFile=${2}
+
+  echo """IP: "$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')" """ > ${targetFile}
+  echo """DNS: "$(terraform output -json instance_public_dns | jq ".[${counter}][0]" | tr -d '"')" """ >> ${targetFile}
+}
+
 function main {
   # check if aws config is mounted
   if [[ ! -f "$(echo ~)/.aws/credentials" ]]; then
@@ -76,15 +84,11 @@ function main {
   # execute terraform
   execute "terraform $@ -var-file='../workdir/variables.tfvars' -auto-approve"
 
+  # create readme file
   if [[ "${1}" == "apply" ]]; then 
     counter=${instance_replica}
     while [[ ${counter} -ge 0 ]]; do
-      echo """IP: "$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')
-DNS: "$(terraform output -json instance_public_dns | jq ".[${counter}][0]" | tr -d '"')
-
-SSH access via
-ssh centos@IP -I access
-""" > ../workdir/${resource_prefix}/${instance_replica}/readme.txt
+      create_readme ${counter} ../workdir/${resource_prefix}/${instance_replica}/readme.txt
       counter=$((counter - 1))
     done
   fi  
