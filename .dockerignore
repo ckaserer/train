@@ -1,1 +1,4 @@
-.terraform
+.git
+terraform/.terraform
+workdir
+docs
