@@ -1,10 +1,29 @@
 Available Workshops
 #######################
 
+* containerization
 * helloworld
-* containerization (WIP)
+* troubleshooting (WIP)
 
 ---------
+
+containerization
+------------------------
+
+The containerization workshop is designed to experiment with container technology such as docker and docker-compose. Provisioning a workshop with :code:`bootstrap_file = "containerization.sh"` in your :code:`workdir/variables.tfvars` will 
+
+* update the OS
+* install epel-release
+* install ansible
+* run the gepardec.docker ansible role to
+
+    * install docker
+    * install docker-compose 
+    * sets docker usage rights (docker group) to the default VM user (centos). 
+
+This bootstrap script is preparing the host to run ansible and continues execute more complex steps via ansible.
+
+------------
 
 helloworld
 ------------
@@ -19,10 +38,9 @@ This is a simple and lightweight way to start experimenting with the infrastruct
 
 ---------
 
-containerization (WIP)
+troubleshooting (WIP)
 ------------------------
 
-Disclaimer: The containerization workshop is not readily available yet!
-Hence the WIP in brackets (Work in Progress)
+Disclaimer: The troubleshooting workshop is not readily available yet! Hence the WIP in brackets (Work in Progress)
 
-Contact: ckaserer
+Contact: wirnse
