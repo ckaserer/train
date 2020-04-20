@@ -28,7 +28,7 @@ function execute () {
 
 function usage {
   echo 
-  echo 'docker run --rm -it -v $(echo ~)/.aws:/root/.aws:ro -v $(pwd):/opt/train/output gepardec/train COMMAND'
+  echo 'docker run --rm -it -v $(echo ~)/.aws:/root/.aws:ro -v $(pwd):/opt/train/workdir gepardec/train COMMAND'
   echo "Available commands: valid terraform commands such as apply or destroy"
 }
 
