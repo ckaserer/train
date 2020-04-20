@@ -34,7 +34,7 @@ Next we need to populate our file. Let's say I, :code:`Jon Doe <jdoe>`, want to 
    owner            = "jdoe"
    resource_prefix  = "helloworld"
 
-If you want a bit more explaination in regard to what those variable are for you can check out :doc:`Variables <variables>`
+If you want a bit more explaination in regard to what those variable are for you can check out :doc:`Variables <variables>`.
 
 Now we can create our workshop environment via
 
