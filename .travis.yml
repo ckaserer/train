@@ -1,3 +1,4 @@
+---
 version: "~> 1.0"
 os: linux
 language: shell
@@ -9,11 +10,12 @@ notifications:
   slack:
     if: branch = master
     rooms:
-      secure: TDYbRJ7UJRy6DYeek5Gpmsuo9aaSwR1VUx/RbOEfd8N9c+uSnIeazVkGn4DgopPfPqoyikbSvzONADVt749y9FdZauQwv6eg1UBd73Q/bpdsLelqcPZ7/XtWmQJdJwXSQGkSi1fxg8GQAADCyBJTBgkw8mc2H1O/qzgPp13Den5/+Aq3fcnYAp6UVNBx5HbT1vaAaghHUYP0wzgClEofymn02r8WEWPCvXse1dECH+oV1m+PWTW3bJ/pqB4TW6fRms9EHUk2+w2Va0uNVFanCMisaQVYUiZqZ8bNnmSrQE+BY8OGLsqOz6tlNd8NkspE9mfiicnFIGSxlAWfCKRrzHMnIZPAM9EkTDKFUZmmZOOPGXWoiaxjQ8U9Jo8aHrJYqgannDgruZnpJ05jcFgt3jZZmXtImg4RRp4rEY0MYEuMvtozd8O93hHXldRPgZNK80Nx/n314FWKZnv1bdHU7V/h2Y1StB/UcDz3tgIs6f42j9Ap2TDB7H7uZgOVBGznMjjeT5UJHd5bvlrQQ1kSk0RSp3ohwZvNhrgiGZ03yuSeCYluElrOkSUK2sFRzKM6PtrLw4FzN1BKBGQL3puKEO8/MAH/pPbTkTgHGyhKiG3tl6jsRJjKeqpL249V9DGWGrGmb2N7j96NUnY7YTKLsg2fYKSSFJmI0r+TPoi4l44=
+      secure: Et8yz+XGKhS6qotEjOpYtuW4ZeQkOEx1COv6ZKfTzvYKZ9H8Vu/Y669TmJ/RL/Mnh39svtul9cRthuLYj+Wh2Glvvs0EYj/fj+k3xb173qdIsS760b8qp4M15zsSX8rZ657NUnDPnw5IA4t1PZqYTXPhpTuG73rYZY8cZhV173TgBp+IeYgwHSxgplYSXP9z4dxLTx+pFczlHJo8sTg58Sgb+ppVdxU/A4luBgqnX9mPuBoEEmXfuAFnhLr/pvoItRAlU9dvNZeYshQmNYUdQ49x3CHOpKvigtdzh7d65xqXRMHb3vFxQElLw8X5Mfpsh2QcP+St+9OiU45Q1ENLO0yKMcmiEVQBpTLEMiYakZiXC9J56hf7X6aBUHevlY5Hnc6SK51LWNxD6c/p6d2DGiE+SawIjB8f9KbwPwXHsd6sOFQT1s6IODKJ8bPa7jclRZm3zDRAhq0X2sy2rcvdYXGb8sLjnkKRsu2JOImlKmKfxi0oJqcOldjgsDndXgdaZjfExQH0HGU+2OwmFiyeYUb51VKMzUZmBUgodgWEC7JPvdclsATrtWdA0tlNh4ZPLFW+68p3c8Jfxg4KS93OZuHFw0H1tiZmY/VjuiuL1kIF0d5O3ORy9YF1oAPtpotz8UEoYBeACxuSVatBS1SAQIPTXfOp91Vv7AuEKGEodL4=
     template:
-      - "%{commit_subject}"
-      - build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) @%{branch}
-      - by %{author} %{result} in %{duration}
+    - "%{commit_subject}"
+    - build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) @%{branch}
+    - by %{author} %{result} in %{duration}
     on_success: change
     on_failure: always
-script: .ci/test.sh
+script: ".ci/test.sh"
+...
