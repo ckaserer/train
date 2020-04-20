@@ -68,7 +68,7 @@ A new Workshop
 
    workshop_create
 
-You want to do a workshop but could not find a readiliy available bootstrap script that fits your need? Don't worry, :doc:`here <workshop_create>`  we cover how you can create a new bootstrap file containing all the provision steps you desire. Please consider adding it to our repo once you are happy with it so we all can benefit from your work.
+You want to do a workshop but could not find a readiliy available bootstrap script that fits your need? Don't worry, :doc:`here <workshop_create>`  we cover how you can create a new bootstrap file containing all the provision steps you desire. Please consider adding it to our repo once you are happy with it so all can benefit from your work.
 
 ---------
 

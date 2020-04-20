@@ -5,7 +5,8 @@ Our Documentation is contained in the :code:`/docs` folder and available as gith
 
 .. code-block:: bash
    
-    make clean && make html
+   cd docs
+   make clean && make html
 
 Changes to the docs need to be done in :code:`/docs/source`. In this folder you can use the existing rst (ReStructuredText) files for your documentation or create new ones.
 
