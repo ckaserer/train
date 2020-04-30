@@ -91,6 +91,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#instance-type">instance_type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#owner">owner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#resource-prefix">resource_prefix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ami-name">ami_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ami-owners">ami_owners</a></li>
 </ul>
 </li>
 </ul>
@@ -211,6 +213,16 @@
 <div class="section" id="resource-prefix">
 <h2>resource_prefix<a class="headerlink" href="#resource-prefix" title="Permalink to this headline">¶</a></h2>
 <p>All resources are named based on the <code class="code docutils literal notranslate"><span class="pre">resource_prefix</span></code> specified in <code class="code docutils literal notranslate"><span class="pre">workdir/variables.tfvars</span></code>. E.g. the VPC name with <code class="code docutils literal notranslate"><span class="pre">resource_prefix</span> <span class="pre">=</span> <span class="pre">&quot;helloworld&quot;</span></code> is <code class="code docutils literal notranslate"><span class="pre">helloworld_vpc</span></code>. This increases transparency and in some cases resource names need to be unique.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="ami-name">
+<h2>ami_name<a class="headerlink" href="#ami-name" title="Permalink to this headline">¶</a></h2>
+<p>The Amazon Machine Image Name, or partial name with regex, used to boot the ec2 instance(s). Do not change this unless you know what you are doing.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="ami-owners">
+<h2>ami_owners<a class="headerlink" href="#ami-owners" title="Permalink to this headline">¶</a></h2>
+<p>The owner ids of allowed AMIs. Do not change this unless you know what you are doing.</p>
 </div>
 </div>
 

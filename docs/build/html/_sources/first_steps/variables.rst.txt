@@ -43,3 +43,17 @@ All resource associated with the workshop are tagged with an :code:`owner` tag c
 resource_prefix
 ---------------
 All resources are named based on the :code:`resource_prefix` specified in :code:`workdir/variables.tfvars`. E.g. the VPC name with :code:`resource_prefix = "helloworld"` is :code:`helloworld_vpc`. This increases transparency and in some cases resource names need to be unique.
+
+
+-----------
+
+ami_name
+---------------
+The Amazon Machine Image Name, or partial name with regex, used to boot the ec2 instance(s). Do not change this unless you know what you are doing.
+
+-----------
+
+ami_owners
+---------------
+
+The owner ids of allowed AMIs. Do not change this unless you know what you are doing.

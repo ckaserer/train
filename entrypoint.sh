@@ -34,10 +34,17 @@ function usage {
 
 function create_readme {
   local counter=${1}
-  local targetFile=${2}
+  local targetDir=${2}
 
-  echo """IP: "$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')" """ > ${targetFile}
-  echo """DNS: "$(terraform output -json instance_public_dns | jq ".[${counter}][0]" | tr -d '"')" """ >> ${targetFile}
+  echo """IP: "$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')" """ > ${targetDir}/readme.txt
+  echo """DNS: "$(terraform output -json instance_public_dns | jq ".[${counter}][0]" | tr -d '"')" """ >> ${targetDir}/readme.txt
+}
+
+function create_ansible_inventory {
+  local counter=${1}
+  local targetDir=${2}
+
+  echo """"$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')" ansible_user=fedora ansible_ssh_private_key_file=${targetDir}/${counter}/access""" >> ../${targetDir}/hosts
 }
 
 function main {
@@ -84,11 +91,13 @@ function main {
   # execute terraform
   execute "terraform $@ -var-file='../workdir/variables.tfvars' -auto-approve"
 
-  # create readme file
+  # create readme and ansible inventory
   if [[ "${1}" == "apply" ]]; then 
     counter=${instance_replica}
+    >../workdir/${resource_prefix}/hosts
     while [[ ${counter} -ge 0 ]]; do
-      create_readme ${counter} ../workdir/${resource_prefix}/${instance_replica}/readme.txt
+      create_readme ${counter} ../workdir/${resource_prefix}/${instance_replica}
+      create_ansible_inventory ${counter} workdir/${resource_prefix}
       counter=$((counter - 1))
     done
   fi  

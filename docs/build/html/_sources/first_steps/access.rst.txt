@@ -7,10 +7,11 @@ In the previous section we have created a :code:`workdir`. After you have provis
    
    workdir/
     ├── helloworld
-    │   └── 0
-    │       ├── access
-    │       ├── access.pub
-    │       └── readme.txt
+    │   ├── 0
+    │   │   ├── access
+    │   │   ├── access.pub
+    │   │   └── readme.txt
+    │   └── hosts
     └── variables.tfvars
 
 To access the first VM of our :code:`helloworld` prefixed VM via ssh run

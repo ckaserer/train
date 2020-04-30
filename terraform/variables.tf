@@ -1,7 +1,7 @@
 variable "ami_name" {
-  type = string
-  default = "CentOS Linux 7 x86_64 HVM *"
-  description = "The Amazon Machine Image Name, or partial name with regex, to use to boot the ec2 instance(s)."
+  type = list(string)
+  default = ["CentOS Linux 7 x86_64 HVM *"]
+  description = "The Amazon Machine Image Name, or partial name with regex, used to boot the ec2 instance(s)."
 }
 
 variable "ami_owners" {
