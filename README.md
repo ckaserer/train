@@ -1,4 +1,4 @@
-# Workshop Environment
+# Workshop Environments
 
 Providing a frictionless experience for workshop participants with hands on, technical sections is key to focus on what is important - hands on learning and experimenting with new technology. 
 

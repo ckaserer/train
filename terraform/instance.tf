@@ -1,9 +1,9 @@
-data "aws_ami" "centos" {
+data "aws_ami" "main" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["CentOS Linux 7 x86_64 HVM *"]
+    values = ["${var.ami_name}"]
   }
 
   filter {
@@ -11,11 +11,11 @@ data "aws_ami" "centos" {
     values = ["hvm"]
   }
 
-  owners = ["679593333241"] # CentOS
+  owners = var.ami_owners
 }
 
 resource "aws_instance" "main" {
-  ami             = data.aws_ami.centos.id
+  ami             = data.aws_ami.main.id
   count           = var.instance_replica
   instance_type   = var.instance_type
   key_name        = "${var.resource_prefix}_${count.index}"
