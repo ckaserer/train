@@ -97,7 +97,7 @@ function main {
     >../workdir/${resource_prefix}/hosts
     while [[ ${counter} -ge 0 ]]; do
       create_readme ${counter} ../workdir/${resource_prefix}/${counter}
-      create_ansible_inventory ${counter} workdir/${counter}
+      create_ansible_inventory ${counter} workdir/${resource_prefix}
       counter=$((counter - 1))
     done
   fi  
