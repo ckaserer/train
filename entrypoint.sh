@@ -82,8 +82,8 @@ function main {
   local counter=${instance_replica}
   if [[ "${1}" == "apply" ]]; then 
     while [[ ${counter} -ge 0 ]]; do
-      execute "mkdir -p ../workdir/${resource_prefix}/${instance_replica}"
-      execute "ssh-keygen -t rsa -b 4096 -f ../workdir/${resource_prefix}/${instance_replica}/access -q -N ''"
+      execute "mkdir -p ../workdir/${resource_prefix}/${counter}"
+      execute "ssh-keygen -t rsa -b 4096 -f ../workdir/${resource_prefix}/${counter}/access -q -N ''"
       counter=$((counter - 1))
     done
   fi  
@@ -96,8 +96,8 @@ function main {
     counter=${instance_replica}
     >../workdir/${resource_prefix}/hosts
     while [[ ${counter} -ge 0 ]]; do
-      create_readme ${counter} ../workdir/${resource_prefix}/${instance_replica}
-      create_ansible_inventory ${counter} workdir/${resource_prefix}
+      create_readme ${counter} ../workdir/${resource_prefix}/${counter}
+      create_ansible_inventory ${counter} workdir/${counter}
       counter=$((counter - 1))
     done
   fi  
