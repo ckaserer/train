@@ -36,15 +36,15 @@ function create_readme {
   local counter=${1}
   local targetDir=${2}
 
-  echo """IP: "$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')" """ > ${targetDir}/readme.txt
-  echo """DNS: "$(terraform output -json instance_public_dns | jq ".[${counter}][0]" | tr -d '"')" """ >> ${targetDir}/readme.txt
+  echo """IP: "$(terraform output -json instance_public_ips | jq ".[0][${counter}]" | tr -d '"')" """ > ${targetDir}/readme.txt
+  echo """DNS: "$(terraform output -json instance_public_dns | jq ".[0][${counter}]" | tr -d '"')" """ >> ${targetDir}/readme.txt
 }
 
 function create_ansible_inventory {
   local counter=${1}
   local targetDir=${2}
 
-  echo """"$(terraform output -json instance_public_ips | jq ".[${counter}][0]" | tr -d '"')" ansible_user=fedora ansible_ssh_private_key_file=${targetDir}/${counter}/access""" >> ../${targetDir}/hosts
+  echo """"$(terraform output -json instance_public_ips | jq ".[0][${counter}]" | tr -d '"')" ansible_user=fedora ansible_ssh_private_key_file=${targetDir}/${counter}/access""" >> ../${targetDir}/hosts
 }
 
 function main {
