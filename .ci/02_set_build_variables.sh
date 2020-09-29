@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables
-CONTAINER_REPO_NAME=${TRAVIS_REPO_SLUG:-"train"}
+CONTAINER_REPO_NAME=$(echo "${TRAVIS_REPO_SLUG:-'train'}" | awk '{print tolower($0)}')
 
 if [ "${GIT_TAG}" == "master" ]; then
   CONTAINER_IMAGE_TAG="latest"
