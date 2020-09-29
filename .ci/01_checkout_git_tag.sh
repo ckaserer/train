@@ -5,8 +5,6 @@ if [ "${TAG}" != "latest" ]; then
   set -ex
   git checkout ${GIT_TAG}
   set +ex
-elif [ "$(git rev-parse --abbrev-ref HEAD)" == "HEAD" ]; then
-  GIT_TAG="$(git describe --tags --abbrev=0)"
 else
-  GIT_TAG="$(git rev-parse --abbrev-ref HEAD)"
+  GIT_TAG="${TRAVIS_BRANCH}"
 fi

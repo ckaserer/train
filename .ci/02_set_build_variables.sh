@@ -3,7 +3,7 @@
 # Set variables
 CONTAINER_REPO_NAME=${TRAVIS_REPO_SLUG:-"train"}
 
-if [ -z ${GIT_TAG+x} ]; then
+if [ "${GIT_TAG}" == "master" ]; then
   CONTAINER_IMAGE_TAG="latest"
 else
   CONTAINER_IMAGE_TAG="${GIT_TAG}"
