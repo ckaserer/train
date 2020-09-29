@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# build image
-docker build -t train --no-cache . 
+# fail and exit
+set -ex
 
 # disable remote terraform state backend
 cat << EOF >terraform/override.tf
@@ -15,12 +15,12 @@ terraform {
 EOF
 
 # check terraform version
-echo "Terraform Version: "
-docker run --rm --entrypoint=/bin/terraform train version
+echo "Terraform Version: "; docker run --rm --entrypoint=/bin/terraform ${CONTAINER_IMAGE_NAME} version
 
 # run terraform validation
-docker run --rm -v $(pwd):/mnt/ --entrypoint=/bin/sh train -c "\
+docker run --rm -v $(pwd):/mnt/ --entrypoint=/bin/sh ${CONTAINER_IMAGE_NAME} -c "\
   cd /mnt/terraform && \
   terraform init -input=false && \
   terraform validate"
 
+set +ex

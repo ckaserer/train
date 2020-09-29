@@ -17,5 +17,21 @@ notifications:
     - by %{author} %{result} in %{duration}
     on_success: change
     on_failure: always
-script: ".ci/test.sh"
+
+jobs:
+  include:
+    - env: TAG=latest
+    # - if: branch = master
+    #   env: TAG=1
+    # - if: branch = master
+    #   env: TAG=2
+    # - if: branch = master
+    #   env: TAG=2
+script: 
+  - . .ci/01_checkout_git_tag.sh
+  - . .ci/02_set_build_variables.sh
+  - . .ci/03_build_container.sh
+  - . .ci/04_terraform_validate.sh
+  - . .ci/05_docker_login.sh
+  - . .ci/06_docker_push.sh
 ...
