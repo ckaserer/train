@@ -21,8 +21,8 @@ notifications:
 jobs:
   include:
     - env: TAG=latest
-    # - if: branch = master
-    #   env: TAG=1
+    - if: branch = master
+      env: TAG=1
     # - if: branch = master
     #   env: TAG=2
     # - if: branch = master
