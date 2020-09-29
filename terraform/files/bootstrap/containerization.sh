@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# install ansible
 yum update -y
 yum install -y epel-release
 yum install -y ansible
 
+# install roles
 ansible-galaxy install ckaserer.bashrc
 ansible-galaxy install ckaserer.desktop
 ansible-galaxy install ckaserer.keymap
@@ -55,8 +57,14 @@ cat << EOF > /tmp/playbook.yml
 ...
 EOF
 
+# run playbook
 ansible-playbook /tmp/playbook.yml >/tmp/playbook.out 2>&1
 
+# set SELinux in permissive mode (effectively disabling it)
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+# install kubelet, kubeadm and kubectl
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -67,10 +75,6 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 exclude=kubelet kubeadm kubectl
 EOF
-
-# Set SELinux in permissive mode (effectively disabling it)
-sudo setenforce 0
-sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 sudo yum install -y jq kubelet kubeadm kubectl --disableexcludes=kubernetes
 
