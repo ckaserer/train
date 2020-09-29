@@ -28,6 +28,7 @@ jobs:
     # - if: branch = master
     #   env: TAG=2
 script: 
+  - set -e
   - . .ci/01_checkout_git_tag.sh
   - . .ci/02_set_build_variables.sh
   - . .ci/03_build_container.sh

@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# fail and print
-set -ex
+set -x
 
 # build image
 docker build -t ${CONTAINER_IMAGE_NAME} --no-cache . 
 
-set +ex
+set +x

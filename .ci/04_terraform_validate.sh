@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# fail and exit
-set -ex
+set -x
 
 # disable remote terraform state backend
 cat << EOF >terraform/override.tf
@@ -23,4 +22,4 @@ docker run --rm -v $(pwd):/mnt/ --entrypoint=/bin/sh ${CONTAINER_IMAGE_NAME} -c 
   terraform init -input=false && \
   terraform validate"
 
-set +ex
+set +x

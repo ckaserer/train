@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -ex
+set -x
 
 docker push ${CONTAINER_IMAGE_NAME}
 
-set +ex
+set +x
