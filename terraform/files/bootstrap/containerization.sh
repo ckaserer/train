@@ -11,8 +11,8 @@ ansible-galaxy install ckaserer.desktop
 ansible-galaxy install ckaserer.keymap
 ansible-galaxy install ckaserer.remote_desktop
 ansible-galaxy install ckaserer.timezone
-ansible-galaxy install ckaserer.users 
-ansible-galaxy install geerlingguy.docker 
+ansible-galaxy install ckaserer.users
+ansible-galaxy install geerlingguy.docker
 ansible-galaxy install grog.sudo
 
 cat << EOF > /tmp/playbook.yml
@@ -58,7 +58,7 @@ cat << EOF > /tmp/playbook.yml
 EOF
 
 # run playbook
-ansible-playbook /tmp/playbook.yml >/tmp/playbook.out 2>&1
+ansible-playbook /tmp/playbook.yml 2>&1 | tee /tmp/playbook.log
 
 # set SELinux in permissive mode (effectively disabling it)
 sudo setenforce 0
