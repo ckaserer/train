@@ -40,14 +40,6 @@ cat << EOF > /tmp/playbook.yml
               nopasswd: yes
               commands: ALL
     - include_role:
-        name: ckaserer.desktop
-      vars:
-        autologin_user: centos
-    - include_role:
-        name: ckaserer.keymap
-    - include_role:
-        name: ckaserer.remote_desktop
-    - include_role:
         name: ckaserer.timezone
     - include_role:
         name: geerlingguy.docker
