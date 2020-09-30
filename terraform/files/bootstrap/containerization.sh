@@ -14,12 +14,22 @@ ansible-galaxy install ckaserer.timezone
 ansible-galaxy install ckaserer.users
 ansible-galaxy install geerlingguy.docker
 ansible-galaxy install grog.sudo
+ansible-galaxy install grog.package
 
 cat << EOF > /tmp/playbook.yml
 ---
 - hosts: localhost
   become: true
   tasks:
+    - include_role:
+        name: grog.package
+      vars:
+        package_list:
+          - name: git
+          - name: vim
+          - name: htop
+          - name: net-tools
+          - name: wget
     - include_role:
         name: ckaserer.bashrc
       vars: 
