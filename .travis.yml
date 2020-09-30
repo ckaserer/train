@@ -23,10 +23,10 @@ jobs:
     - env: TAG=latest
     - if: branch = master
       env: TAG=1
-    # - if: branch = master
-    #   env: TAG=2
-    # - if: branch = master
-    #   env: TAG=2
+    - if: branch = master
+      env: TAG=2
+    - if: branch = master
+      env: TAG=3
 script: 
   - set -e
   - . .ci/01_checkout_git_tag.sh
