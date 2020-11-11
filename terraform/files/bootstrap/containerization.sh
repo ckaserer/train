@@ -30,6 +30,8 @@ cat << EOF > /tmp/playbook.yml
           - name: htop
           - name: net-tools
           - name: wget
+          - name: nano
+          - name: gcc
     - include_role:
         name: ckaserer.bashrc
       vars: 
