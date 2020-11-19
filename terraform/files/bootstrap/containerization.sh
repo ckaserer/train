@@ -32,6 +32,7 @@ cat << EOF > /tmp/playbook.yml
           - name: wget
           - name: nano
           - name: gcc
+          - name: httping
     - include_role:
         name: ckaserer.bashrc
       vars: 
