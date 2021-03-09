@@ -29,11 +29,8 @@ jobs:
   build:
     name: Build & Push
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        TAG:
-          - latest
-      fail-fast: false
+    needs:
+      - linter
 
     steps:
       - name: Checkout Code
@@ -62,7 +59,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs:
-      - linter
       - build
     steps:
       - name: Notify Slack channel on failure
