@@ -27,6 +27,10 @@ resource "aws_instance" "main" {
     delete_on_termination = true
   }
 
+  metadata_options {
+      http_tokens = "required"
+  }
+  
   tags = {
     Name    = "${var.resource_prefix}_${count.index}"
     created = timestamp()
