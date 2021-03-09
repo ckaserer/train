@@ -89,7 +89,7 @@ function main {
   fi  
 
   # execute terraform
-  execute "terraform $@ -var-file='../workdir/variables.tfvars' -auto-approve"
+  execute "terraform $* -var-file='../workdir/variables.tfvars' -auto-approve"
 
   # create readme and ansible inventory
   if [[ "${1}" == "apply" ]]; then 
@@ -103,4 +103,4 @@ function main {
   fi  
 }
 
-main $@
+main "$@"
