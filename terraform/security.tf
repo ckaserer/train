@@ -1,4 +1,5 @@
 resource "aws_security_group" "main" {
+  #ts:skip=AWS.SecurityGroup.NetworkSecurity.High.0094
   name        = "${var.resource_prefix}_sg"
   vpc_id      = aws_vpc.main.id
   description = "Allow all traffic"
