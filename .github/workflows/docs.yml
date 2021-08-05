@@ -1,0 +1,40 @@
+---
+name: Documentation
+
+'on':
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '*'
+    paths:
+      - docs
+  schedule:
+    - cron: '30 8 * * 3'
+
+jobs:
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install Dependencies
+        run: pip3 install -r docs/requirements.txt
+
+      - name: Run Documentation Build
+        run: cd docs && make html
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: docs
+        continue-on-error: true
+...
