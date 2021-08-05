@@ -12,7 +12,7 @@
    :align: left
 
 |br|
- 
+
 Welcome to our workshop infra docs!
 =======================================================
 
