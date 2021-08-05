@@ -9,6 +9,7 @@ name: Documentation
       - '*'
     paths:
       - 'docs/**'
+      - '.github/workflows/docs.yml'
   schedule:
     - cron: '30 8 * * 3'
 
