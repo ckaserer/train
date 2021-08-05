@@ -7,9 +7,6 @@ yum install -y ansible
 
 # install roles
 ansible-galaxy install ckaserer.bashrc
-ansible-galaxy install ckaserer.desktop
-ansible-galaxy install ckaserer.keymap
-ansible-galaxy install ckaserer.remote_desktop
 ansible-galaxy install ckaserer.timezone
 ansible-galaxy install ckaserer.users
 ansible-galaxy install geerlingguy.docker
