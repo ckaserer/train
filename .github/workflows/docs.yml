@@ -30,7 +30,7 @@ jobs:
         run: pip3 install -r docs/requirements.txt
 
       - name: Run Documentation Build
-        run: cd docs && make html
+        run: cd docs && make html && touch build/html/.nojekyll
 
       - name: Publish
         uses: s0/git-publish-subdir-action@develop
