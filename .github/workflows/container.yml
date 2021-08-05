@@ -9,6 +9,7 @@ name: Container Build
       - '*'
     paths-ignore:
       - 'docs/**'
+      - '.github/workflows/docs.yml'
   schedule:
     - cron: '30 8 * * 3'
 
