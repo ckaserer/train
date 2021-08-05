@@ -15,7 +15,7 @@ The containerization workshop is designed to experiment with container technolog
 * update the OS
 * install epel-release
 * install ansible
-* run the gepardec.docker ansible role to
+* run the docker ansible role to
 
     * install docker
     * install docker-compose 

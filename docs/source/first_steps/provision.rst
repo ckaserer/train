@@ -43,7 +43,7 @@ Now we can create our workshop environment via
    docker run --rm -it \
      -v $(echo ~)/.aws:/root/.aws:ro \
      -v $(pwd)/workdir:/opt/train/workdir \
-     gepardec/train apply
+      ghcr.io/ckaserer/train:latest apply
 
 Resulting in an output similar to this
 
@@ -125,7 +125,7 @@ Destroy a Workshop
    docker run --rm -it \
      -v $(echo ~)/.aws:/root/.aws:ro \
      -v $(pwd)/workdir:/opt/train/workdir \
-     gepardec/train destroy
+     ghcr.io/ckaserer/train:latest destroy
 
 Resulting in an output similar to this
 
